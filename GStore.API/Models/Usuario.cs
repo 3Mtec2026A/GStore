@@ -1,22 +1,19 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Identity;
 
 namespace GStore.API.Models;
 
-[Table("categorias")]
-public class Categoria
+[Table("usuarios")]
+public class Usuario : IdentityUser
 {
-    [Key]
-    public int Id { get; set; }
-
     [Required]
     [StringLength(50)]
     public string Nome { get; set; }
 
+    [DataType(DataType.Date)]
+    public DateTime? DataNascimento { get; set; }
+
     [StringLength(300)]
     public string Foto { get; set; }
-
-    [StringLength(26)]
-    public string Cor { get; set; } = "rgba(0,0,0,1)";
-    
 }
