@@ -1,4 +1,4 @@
-using System.Runtime.Intrinsics.X86;
+using GStore.API.Data.Seeds;
 using GStore.API.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -29,6 +29,13 @@ public class AppDbContext : IdentityDbContext<Usuario>
         builder.Entity<IdentityUserClaim<string>>().ToTable("usuario_regras");
         builder.Entity<IdentityRoleClaim<string>>().ToTable("perfil_regras");
         #endregion
+
+        #region Mock de dados
+        SeedCategoria seedCategoria = new(builder);
+        SeedProduto seedProduto = new(builder);
+        SeedUsuario seedUsuario = new (builder);
+        #endregion
+
     }
 
 }
